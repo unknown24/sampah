@@ -1,4 +1,9 @@
 const path = require('path');
+const last_commit = require('child_process').execSync('git rev-parse HEAD').toString('utf8');
+const webpack = require('webpack');
+
+const date = new Date()
+const date_formated = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear()
 
 module.exports = {
     entry:  {
@@ -6,8 +11,8 @@ module.exports = {
         comp :'./src/js/comp.js'
     },
     output: {
-        filename: 'js/[name].prod.js',
-        path: path.resolve(__dirname, 'dist'),
+        filename: date_formated + '/[name].prod.js',
+        path: path.resolve(__dirname, 'share'),
         library: 'aep',
         libraryTarget: 'umd',
     },
@@ -46,5 +51,8 @@ module.exports = {
                 ],
             },
         ]
-    }
+    },
+    plugins : [new webpack.BannerPlugin({
+        banner: last_commit
+    })]
 };

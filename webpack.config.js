@@ -1,29 +1,20 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     entry:  {
         index :'./src/js/index.js',
         comp :'./src/js/comp.js'
     },
+    devServer: {
+        contentBase: './dist',
+    },
     output: {
         filename: 'js/[name].build.js',
         path: path.resolve(__dirname, 'dist'),
         library: 'aep',
         libraryTarget: 'umd',
-    },
-    externals: {
-        react: {
-            commonjs: "react",
-            commonjs2: "react",
-            amd: "React",
-            root: "React"
-        },
-        "react-dom": {
-            commonjs: "react-dom",
-            commonjs2: "react-dom",
-            amd: "ReactDOM",
-            root: "ReactDOM"
-        }
     },
     mode:'development',
     devtool: "source-map",
@@ -47,5 +38,12 @@ module.exports = {
                 ],
             },
         ]
-    }
+    },
+    plugins: [
+        new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            title: 'Development',
+            template:'index.html'
+        }),
+    ]
 };

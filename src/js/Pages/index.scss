@@ -1,0 +1,43 @@
+:global {
+    body {
+        font-family: 'Baloo Da 2', cursive;
+        margin:0;
+    }
+
+    .text-1 {
+        font-size: 1rem;
+    }
+
+    .text-2 {
+        font-size: .875rem;
+        opacity: .75;
+    }
+
+    .logo {
+        height: 2.5rem;
+    }
+
+    .dummy-height {
+        height: 200vh;
+    }
+    
+}
+
+.section-header {
+    box-shadow: 0 0 32px -4px rgba(0,0,0,.15);
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.module-logo {
+    display: inline-flex;
+    align-items: center;
+
+    div.container-logo {
+        padding:1em;
+        img {
+            height: 2.5rem;
+        }
+    }
+}
